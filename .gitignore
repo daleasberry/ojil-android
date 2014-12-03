@@ -28,6 +28,9 @@ tmp/
 *~.nib
 .settings/
 .loadpath
+# gen'd from gradle eclipse task
+.classpath
+.project
 
 # Local configuration file (sdk path, etc)
 local.properties
