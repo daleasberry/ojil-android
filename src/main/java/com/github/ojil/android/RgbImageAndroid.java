@@ -1,10 +1,10 @@
-package jjil.android;
+package com.github.ojil.android;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import jjil.core.RgbImage;
+import com.github.ojil.core.RgbImage;
 import android.content.Context;
 import android.graphics.Bitmap;
 

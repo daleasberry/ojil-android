@@ -1,10 +1,10 @@
-package jjil.android;
+package com.github.ojil.android;
 
 import java.util.HashMap;
 
 import android.os.SystemClock;
 
-public class TimeTracker implements jjil.core.TimeTracker {
+public class TimeTracker implements com.github.ojil.core.TimeTracker {
 	private class Times {
 		long mlStart = 0, mlElapsed = 0, mlCumulative = 0;
 		

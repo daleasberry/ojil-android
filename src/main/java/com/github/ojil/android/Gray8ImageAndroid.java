@@ -1,6 +1,6 @@
-package jjil.android;
+package com.github.ojil.android;
 
-import jjil.core.Gray8Image;
+import com.github.ojil.core.Gray8Image;
 
 public class Gray8ImageAndroid extends Gray8Image {
 	public Gray8ImageAndroid(int nWidth, int nHeight, byte[] rbYuvData) {

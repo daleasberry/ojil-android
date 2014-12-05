@@ -1,4 +1,4 @@
-package jjil.android;
+package com.github.ojil.android;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
