@@ -3,4 +3,9 @@ apply plugin: 'maven'
 
 repositories { mavenCentral() }
 
+dependencies {
+	compile files('../ojil-core/build/libs/ojil-core.jar')
+	compile files('C:/Android/android-sdk/platforms/android-21/android.jar')
+}
+
 task createWrapper(type: Wrapper) { gradleVersion = '2.2.1' }
