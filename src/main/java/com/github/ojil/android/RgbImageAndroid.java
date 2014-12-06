@@ -30,14 +30,20 @@ public class RgbImageAndroid  {
     	int nWidth = bmp.getWidth();
     	int nHeight = bmp.getHeight();
     	RgbImage rgb = new RgbImage(nWidth, nHeight);
-    	bmp.getPixels(rgb.getData(), 0, nWidth, 0, 0, nWidth, nHeight);
+    	Integer[] rgbData = rgb.getData();
+    	int[] bmpData = new int[rgbData.length];
+    	System.arraycopy(rgbData, 0, bmpData, 0, rgbData.length);
+    	bmp.getPixels(bmpData, 0, nWidth, 0, 0, nWidth, nHeight);
     	return rgb;
     }
 
     static public Bitmap toBitmap(RgbImage rgb)
     {
+    	Integer[] rgbData = rgb.getData();
+    	int[] bmpData = new int[rgbData.length];
+    	System.arraycopy(rgbData, 0, bmpData, 0, rgbData.length);
     	return Bitmap.createBitmap(
-    			rgb.getData(), 
+    			bmpData, 
     			rgb.getWidth(), 
     			rgb.getHeight(), 
     			Bitmap.Config.ARGB_8888);
@@ -45,8 +51,7 @@ public class RgbImageAndroid  {
     
     static public void toDisplay(Context context, RgbImage rgb) 
     {
-    	Bitmap bmp = toBitmap(rgb);
-    	
+    	toBitmap(rgb);
     }
     
     static public void toFile(Context context, RgbImage rgb, int nQuality, String szPath) 

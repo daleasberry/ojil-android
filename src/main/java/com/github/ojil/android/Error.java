@@ -11,7 +11,9 @@ package com.github.ojil.android;
  *
  */
 public class Error extends com.github.ojil.core.Error {
-    private static final String szMessage[][] = new String[com.github.ojil.core.Error.PACKAGE.COUNT][];
+	private static final long serialVersionUID = 556419063832149081L;
+
+	private static final String szMessage[][] = new String[com.github.ojil.core.Error.PACKAGE.COUNT][];
     
     {
         Error.szMessage[com.github.ojil.core.Error.PACKAGE.CORE] = new String[com.github.ojil.core.ErrorCodes.COUNT];

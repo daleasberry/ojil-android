@@ -4,8 +4,16 @@ apply plugin: 'maven'
 repositories { mavenCentral() }
 
 dependencies {
-	compile files('../ojil-core/build/libs/ojil-core.jar')
+	compile files('C:/Users/Dale/git/ojil-core/build/libs/ojil-core.jar')
 	compile files('C:/Android/android-sdk/platforms/android-21/android.jar')
+}
+
+if (JavaVersion.current().isJava8Compatible()) {
+	allprojects {
+		tasks.withType(Javadoc) {
+			options.addStringOption('Xdoclint:none', '-quiet')
+		}
+	}
 }
 
 task createWrapper(type: Wrapper) { gradleVersion = '2.2.1' }

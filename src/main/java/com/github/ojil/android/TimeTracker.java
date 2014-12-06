@@ -15,11 +15,7 @@ public class TimeTracker implements com.github.ojil.core.TimeTracker {
 		public long getCumulative() {
 			return this.mlCumulative;
 		}
-		
-		public long getElapsed() {
-			return this.mlElapsed;
-		}
-		
+				
 		public void setEnd(long lEnd) {
 			this.mlElapsed = lEnd - this.mlStart;
 			this.mlCumulative += this.mlElapsed;
