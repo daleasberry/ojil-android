@@ -1,11 +1,15 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
+sourceCompatibility=1.7
+targetCompatibility=1.7
+
 repositories { mavenCentral() }
 
 dependencies {
 	compile files('C:/Users/Dale/git/ojil-core/build/libs/ojil-core.jar')
 	compile files('C:/Android/android-sdk/platforms/android-21/android.jar')
+    testCompile group:'junit', name: 'junit', version: '4.+'
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
