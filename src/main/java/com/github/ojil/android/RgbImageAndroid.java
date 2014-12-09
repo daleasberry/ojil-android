@@ -4,12 +4,49 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import com.github.ojil.core.RgbImage;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-public class RgbImageAndroid  {
-	/**
+import com.github.ojil.core.RgbImage;
+
+public class RgbImageAndroid extends RgbImage {
+    
+    /** Creates a new instance of RgbImage
+     *
+     * @param cWidth   the image width
+     * @param cHeight  the image height 
+     */
+    public RgbImageAndroid(int cWidth, int cHeight) {
+        super(cWidth, cHeight);
+    }
+    
+    public RgbImageAndroid(int cWidth, int cHeight, Integer[] rnData) {
+        super(cWidth, cHeight, rnData);
+    }
+    
+    /**
+     * Creates a new instance of RgbImage, assigning a constant value
+     * @param bR the red color value to be assigned.
+     * @param bG the green color value to be assigned.
+     * @param bB the blue color value to be assigned.
+     * @param cWidth the image width
+     * @param cHeight the image height
+     */
+    public RgbImageAndroid(int cWidth, int cHeight, byte bR, byte bG, byte bB) {
+        super(cWidth, cHeight, bR, bG, bB);
+    }
+    
+    /**
+     * Creates a new instance of RgbImage, assigning a constant value
+     * @param nRgb the packed RGB value to assign
+     * @param cWidth the image width
+     * @param cHeight the image height
+     */
+    public RgbImageAndroid(int cWidth, int cHeight, int nRgb) {
+        super(cWidth, cHeight, nRgb);
+    }
+    
+    /**
 	 * The sole way to create an RgbImage from an image captured from the camera.
 	 * The parameters are the pointer to the byte data passed to the JPEG picture
 	 * callback and the width and height image you want. You must reduce the
@@ -29,11 +66,11 @@ public class RgbImageAndroid  {
     static public RgbImage toRgbImage(Bitmap bmp) {
     	int nWidth = bmp.getWidth();
     	int nHeight = bmp.getHeight();
-    	RgbImage rgb = new RgbImage(nWidth, nHeight);
-    	Integer[] rgbData = rgb.getData();
-    	int[] bmpData = new int[rgbData.length];
-    	System.arraycopy(rgbData, 0, bmpData, 0, rgbData.length);
+    	int[] bmpData = new int[nWidth * nHeight];
+    	Integer[] rgbData = new Integer[bmpData.length];
     	bmp.getPixels(bmpData, 0, nWidth, 0, 0, nWidth, nHeight);
+    	System.arraycopy(bmpData, 0, rgbData, 0, bmpData.length);
+    	RgbImage rgb = new RgbImage(nWidth, nHeight, rgbData);
     	return rgb;
     }
 
