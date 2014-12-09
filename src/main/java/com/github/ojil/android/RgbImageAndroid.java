@@ -1,9 +1,5 @@
 package com.github.ojil.android;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 
@@ -101,22 +97,5 @@ public class RgbImageAndroid extends RgbImage {
     
     static public void toDisplay(Context context, RgbImageAndroid rgb) {
         rgb.getBitmap();
-    }
-    
-    static public void toFile(RgbImageAndroid rgb, int quality, String path) throws IOException {
-        OutputStream os = new FileOutputStream(path);
-        try {
-            Bitmap bmp = rgb.getBitmap();
-            Bitmap.CompressFormat format = Bitmap.CompressFormat.JPEG;
-            path = path.toLowerCase();
-            if (path.endsWith("jpg") || path.endsWith("jpeg")) { //$NON-NLS-1$ //$NON-NLS-2$
-                format = Bitmap.CompressFormat.JPEG;
-            } else if (path.endsWith("png")) { //$NON-NLS-1$
-                format = Bitmap.CompressFormat.PNG;
-            }
-            bmp.compress(format, quality, os);
-        } finally {
-            os.close();
-        }
     }
 }

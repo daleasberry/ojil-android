@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.github.ojil.android.ImageFactorySpi;
+import com.github.ojil.android.ImageFactoryAndroidSpi;
 
 public class FactoryServiceTest {
     
@@ -13,6 +13,6 @@ public class FactoryServiceTest {
         FactoryService service = new FactoryService();
         service.getImageFactory();
         assertNotNull(service.getImageFactory());
-        assertEquals(ImageFactorySpi.class, service.getImageFactory().getClass());
+        assertEquals(ImageFactoryAndroidSpi.class, service.getImageFactory().getClass());
     }
 }

@@ -4,7 +4,7 @@ import com.github.ojil.core.Image;
 import com.github.ojil.core.ImageFactory;
 import com.github.ojil.core.ImageType;
 
-public class ImageFactorySpi implements ImageFactory {
+public class ImageFactoryAndroidSpi implements ImageFactory {
     
     @Override
     public Image createImage(int width, int height, ImageType type) {
