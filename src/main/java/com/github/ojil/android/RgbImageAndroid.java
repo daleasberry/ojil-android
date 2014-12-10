@@ -1,6 +1,5 @@
 package com.github.ojil.android;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.github.ojil.core.RgbImage;
@@ -11,73 +10,51 @@ public class RgbImageAndroid extends RgbImage {
     /**
      * Creates a new instance of RgbImage
      *
-     * @param cWidth
+     * @param width
      *            the image width
-     * @param cHeight
+     * @param height
      *            the image height
      */
-    public RgbImageAndroid(int cWidth, int cHeight) {
-        super(cWidth, cHeight);
+    public RgbImageAndroid(int width, int height) {
+        super(width, height);
     }
     
-    public RgbImageAndroid(int cWidth, int cHeight, Integer[] rnData) {
-        super(cWidth, cHeight, rnData);
+    public RgbImageAndroid(int width, int height, Integer[] data) {
+        super(width, height, data);
     }
     
     /**
      * Creates a new instance of RgbImage, assigning a constant value
      * 
-     * @param bR
+     * @param r
      *            the red color value to be assigned.
-     * @param bG
+     * @param g
      *            the green color value to be assigned.
-     * @param bB
+     * @param b
      *            the blue color value to be assigned.
-     * @param cWidth
+     * @param width
      *            the image width
-     * @param cHeight
+     * @param height
      *            the image height
      */
-    public RgbImageAndroid(int cWidth, int cHeight, byte bR, byte bG, byte bB) {
-        super(cWidth, cHeight, bR, bG, bB);
+    public RgbImageAndroid(int width, int height, byte r, byte g, byte b) {
+        super(width, height, r, g, b);
     }
     
     /**
      * Creates a new instance of RgbImage, assigning a constant value
      * 
-     * @param nRgb
+     * @param rgb
      *            the packed RGB value to assign
-     * @param cWidth
+     * @param width
      *            the image width
-     * @param cHeight
+     * @param height
      *            the image height
      */
-    public RgbImageAndroid(int cWidth, int cHeight, int nRgb) {
-        super(cWidth, cHeight, nRgb);
+    public RgbImageAndroid(int width, int height, int rgb) {
+        super(width, height, rgb);
     }
     
-    /**
-     * The sole way to create an RgbImage from an image captured from the
-     * camera. The parameters are the pointer to the byte data passed to the
-     * JPEG picture callback and the width and height image you want. You must
-     * reduce the image size because otherwise you will run out of memory. Width
-     * and height reduction by a factor of 2 works on the GPhone.
-     * <p>
-     * Ex. usage
-     * <p>
-     * public void onPictureTaken(byte [] jpegData, android.hardware.Camera
-     * camera) { RgbImage rgb = RgbImageAndroid.toRgbImage(jpegData,
-     * camera.getParameters().getPictureSize().width/2,
-     * camera.getParameters().getPictureSize().height/2); }
-     * 
-     * @param jpegData
-     *            image data supplied to JpegPictureCallback
-     * @param nWidth
-     *            target width image to return
-     * @param nHeight
-     *            target height image to return
-     * @return RgbImage initialized with the image from the camera.
-     */
     public RgbImageAndroid(Bitmap bmp) {
         super(bmp.getWidth(), bmp.getHeight());
         int[] bmpData = new int[width * height];
@@ -93,9 +70,5 @@ public class RgbImageAndroid extends RgbImage {
             bmpImage = Bitmap.createBitmap(bmpData, getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
         }
         return bmpImage;
-    }
-    
-    static public void toDisplay(Context context, RgbImageAndroid rgb) {
-        rgb.getBitmap();
     }
 }

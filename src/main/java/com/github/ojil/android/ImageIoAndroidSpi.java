@@ -33,6 +33,7 @@ public class ImageIoAndroidSpi implements ImageIo {
     
     @Override
     public Image readFile(String path) {
-        return null;
+        //TODO read a file
+        return new RgbImageAndroid(0, 0);
     }
 }
