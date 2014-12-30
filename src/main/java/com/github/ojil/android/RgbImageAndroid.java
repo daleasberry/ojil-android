@@ -2,11 +2,10 @@ package com.github.ojil.android;
 
 import android.graphics.Bitmap;
 
+import com.github.ojil.core.Image;
 import com.github.ojil.core.RgbImage;
 
-public class RgbImageAndroid extends RgbImage {
-    protected Bitmap bmpImage;
-    
+public class RgbImageAndroid extends RgbImage<Bitmap> {
     /**
      * Creates a new instance of RgbImage
      *
@@ -56,19 +55,9 @@ public class RgbImageAndroid extends RgbImage {
     }
     
     public RgbImageAndroid(Bitmap bmp) {
-        super(bmp.getWidth(), bmp.getHeight());
+        super(bmp.getWidth(), bmp.getHeight(), null, bmp);
         int[] bmpData = new int[width * height];
         bmp.getPixels(bmpData, 0, width, 0, 0, width, height);
-        System.arraycopy(bmpData, 0, imageData, 0, bmpData.length);
-        bmpImage = bmp;
-    }
-    
-    public Bitmap getBitmap() {
-        if (bmpImage == null) {
-            int[] bmpData = new int[getData().length];
-            System.arraycopy(getData(), 0, bmpData, 0, getData().length);
-            bmpImage = Bitmap.createBitmap(bmpData, getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
-        }
-        return bmpImage;
+        imageData = Image.arraycopy(bmpData);
     }
 }

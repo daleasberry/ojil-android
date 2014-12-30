@@ -12,12 +12,12 @@ import com.github.ojil.core.ImageIo;
 public class ImageIoAndroidSpi implements ImageIo {
     
     @Override
-    public void writeFile(Image image, int quality, String path) throws IOException{
+    public void writeFile(Image<?, ?> image, int quality, String path) throws IOException{
         //TODO handle other ImageType-s
         RgbImageAndroid rgb = (RgbImageAndroid) image;
         OutputStream os = new FileOutputStream(path);
         try {
-            Bitmap bmp = rgb.getBitmap();
+            Bitmap bmp = rgb.getPlatformImage();
             Bitmap.CompressFormat format = Bitmap.CompressFormat.JPEG;
             path = path.toLowerCase();
             if (path.endsWith("jpg") || path.endsWith("jpeg")) {
@@ -32,7 +32,7 @@ public class ImageIoAndroidSpi implements ImageIo {
     }
     
     @Override
-    public Image readFile(String path) {
+    public Image<?,?> readFile(String path) {
         //TODO read a file
         return new RgbImageAndroid(0, 0);
     }
