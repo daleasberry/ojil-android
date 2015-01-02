@@ -10,7 +10,7 @@ public class FactoryServiceTest {
     
     @Test
     public void testGetImageFactory() {
-        assertNotNull(FactoryService.getImageFactory());
-        assertEquals(ImageFactoryAndroidSpi.class, FactoryService.getImageFactory().getClass());
+        assertNotNull(ImageFactoryService.getImageFactory());
+        assertEquals(ImageFactoryAndroidSpi.class, ImageFactoryService.getImageFactory().getClass());
     }
 }

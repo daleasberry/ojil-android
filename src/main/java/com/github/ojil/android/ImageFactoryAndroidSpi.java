@@ -6,7 +6,7 @@ import com.github.ojil.core.Image;
 import com.github.ojil.core.ImageFactory;
 import com.github.ojil.core.ImageType;
 
-public class ImageFactoryAndroidSpi implements ImageFactory {
+public class ImageFactoryAndroidSpi implements ImageFactory<Bitmap> {
     
     @Override
     public Image<Integer, Bitmap> createImage(int width, int height, ImageType type) {
@@ -19,5 +19,10 @@ public class ImageFactoryAndroidSpi implements ImageFactory {
                 throw new RuntimeException("Not yet implemented");
         }
         return newImage;
+    }
+
+    @Override
+    public Image<Integer, Bitmap> createImage(Bitmap platformImage) {
+        return new RgbImageAndroid(platformImage);
     }
 }
